@@ -4,17 +4,17 @@ public class Chessboard {
     Integer[][] board = new Integer[8][8];
 
     public Chessboard(){
-        for(int h = 0; h < 8; h++) {        // sets null to 0
-            for(int v = 0; v < 8; v++){
-                if (board[h][v] == null) {
-                    board[h][v] = 0;
+        for(int row = 0; row < 8; row++) {        // sets null to 0
+            for(int col = 0; col < 8; col++){
+                if (board[row][col] == null) {
+                    board[row][col] = 0;
                 }
             }
-            }
+        }
     }
 
-    public void putPiece(int h, int v, int piece){     // horizontal, vertikal, piece
-        board[h][v] = piece;
+    public void putPiece(int row, int col, int piece){
+        board[row][col] = piece;
     }
 
     private boolean isSafe(int row, int col) {
@@ -62,10 +62,10 @@ public class Chessboard {
     public String printBoard(){
         String res = "#. a b c d e f g h \n";
 
-        for(int h = 0; h < 8; h++) {
-            res += h+1 + ". ";
-            for(int v = 0; v < 8; v++){
-                res += board[h][v] + " ";
+        for(int row = 0; row < 8; row++) {
+            res += row+1 + ". ";
+            for(int col = 0; col < 8; col++){
+                res += board[row][col] + " ";
             }
             res += "\n";
         }
