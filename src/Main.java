@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Chessboard board = new Chessboard();
 
-        board.putPiece(0,0,"Q");
+        board.putPiece(0,0,1);
         System.out.print(board.printBoard());
     }
 }
