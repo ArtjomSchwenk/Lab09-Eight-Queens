@@ -3,9 +3,9 @@ package src;
 public class Chessboard {
     Integer[][] board = new Integer[8][8];
 
-    public Chessboard(){
-        for(int row = 0; row < 8; row++) {        // sets null to 0
-            for(int col = 0; col < 8; col++){
+    public Chessboard() {
+        for (int row = 0; row < 8; row++) {        // sets null to 0
+            for (int col = 0; col < 8; col++) {
                 if (board[row][col] == null) {
                     board[row][col] = 0;
                 }
@@ -13,7 +13,7 @@ public class Chessboard {
         }
     }
 
-    public void putPiece(int row, int col, int piece){
+    public void putPiece(int row, int col, int piece) {
         board[row][col] = piece;
     }
 
@@ -59,12 +59,12 @@ public class Chessboard {
         return false;
     }
 
-    public String printBoard(){
+    public String printBoard() {
         String res = "#. a b c d e f g h \n";
 
-        for(int row = 0; row < 8; row++) {
-            res += row+1 + ". ";
-            for(int col = 0; col < 8; col++){
+        for (int row = 0; row < 8; row++) {
+            res += row + 1 + ". ";
+            for (int col = 0; col < 8; col++) {
                 res += board[row][col] + " ";
             }
             res += "\n";
@@ -73,3 +73,46 @@ public class Chessboard {
         return res;
     }
 }
+   /* AUFGABE 4 aber NICHT implementiert in Chessboard
+    public class SolveQ {
+        public static void main(String[] args) {
+        }
+
+        private static boolean SolveQ(int[][] arr, int row, int col) {
+            if (row == 0)
+                return true;
+            // horizontalchecker
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[row][i] == 1)
+                    return false;
+
+            }
+            // vertikalchecker possible von malte
+            for (int i = 0; i <= row; i++) {
+                if (arr[i][col] == 1)
+                    return false;
+            }
+            // linke Diagonale
+            int i = row - 1;
+            int j = col - 1;
+            while (i >= 0 && j >= 0) {
+                if (arr[i][j] == 1)
+                    return false;
+                i--;
+                j--;
+            }
+            // rechte Diagonale
+            i = row - 1;
+            j = col + 1;
+            while (i >= 0 && j < arr.length) {
+                if (arr[i][j] == 1)
+                    return false;
+                i--;
+                j++;
+            }
+            return true;
+
+        }
+        }
+    }
+*/
