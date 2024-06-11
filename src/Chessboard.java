@@ -1,7 +1,7 @@
 package src;
 
 public class Chessboard {
-    String[][] board = new String[8][8];
+    public String[][] board = new String[8][8];
 
     public Chessboard(){
         for(int h = 0; h < 8; h++) {        // sets null to 0
