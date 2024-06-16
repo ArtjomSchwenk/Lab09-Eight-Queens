@@ -1,32 +1,35 @@
 package src;
 
 public class Chessboard {
-    Integer[][] board = new Integer[8][8];
+    Integer[][] board;
+    int rowSize;
+    int colSize;
 
-    public Chessboard(){
-        for(int row = 0; row < 8; row++) {        // sets null to 0
-            for(int col = 0; col < 8; col++){
-                if (board[row][col] == null) {
-                    board[row][col] = 0;
-                }
-            }
-        }
+    public Chessboard(int row, int col) {
+        board = new Integer[row][col];
+        rowSize = row;
+        colSize = col;
+        resetBoard();
     }
 
-    public void putPiece(int row, int col, int piece){
+    public void resetBoard() {                  // resets board
+        for (int row = 0; row < rowSize; row++)
+            for (int col = 0; col < colSize; col++)
+                board[row][col] = 0;
+    }
+
+    public void putPiece(int row, int col, int piece) {
         board[row][col] = piece;
     }
 
-    private boolean isSafe(int row, int col) {
-        // Check if there's a queen in the same column
+    public boolean isSafe(int row, int col) { // Wenn Queen in selber col dann FALSE
         for (int i = 0; i < row; i++) {
             if (board[i][col] == 1) {
                 return false;
             }
         }
 
-        // Check diagonals
-        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) { // check diagonale
             if (board[i][j] == 1) {
                 return false;
             }
@@ -40,7 +43,7 @@ public class Chessboard {
         return true;
     }
 
-    private boolean solveQueens(int row) {
+    public boolean solveQueens(int row) {
         int n = board.length;
         if (row == n) {
             return true;
@@ -59,12 +62,15 @@ public class Chessboard {
         return false;
     }
 
-    public String printBoard(){
+    public String printBoard() {
         String res = "#. a b c d e f g h \n";
 
-        for(int row = 0; row < 8; row++) {
-            res += row+1 + ". ";
-            for(int col = 0; col < 8; col++){
+        for (int row = 0; row < rowSize; row++) {
+
+            if (row < 9) res += "0"+ (row + 1) + ". ";
+            else res += (row + 1) + ". ";
+
+            for (int col = 0; col < colSize; col++) {
                 res += board[row][col] + " ";
             }
             res += "\n";
